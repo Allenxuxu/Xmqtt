@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 
   EventLoop loop;
   InetAddress listenAddr(1883);
-  MqttServer server(&loop, listenAddr, 2);
+  MqttServer server(&loop, listenAddr, 4);
 
   server.start();
   loop.loop();
