@@ -1,0 +1,12 @@
+[Unit]
+Description=Xmqtt Server
+
+Wants=network-online.target
+After=network-online.target 
+
+[Service]
+ExecStart=/home/ubuntu/Xmqtt/bin-debug/mqtt-server
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
