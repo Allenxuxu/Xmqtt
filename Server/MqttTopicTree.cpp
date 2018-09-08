@@ -71,6 +71,9 @@ void MqttTopicTree::unSubscriber(const string& topic, const boost::shared_ptr<Mq
                                                       findSubscriber(subscriber));
     if(it != v.subscribers_.end())
       v.subscribers_.erase(it);
+
+    if(v.subscribers_.size() == 0 && !v.retainMsg_)
+      topicMapPtr_->erase(topic);
   }
   else
   {
@@ -87,6 +90,9 @@ void MqttTopicTree::unSubscriber(const string& topic, const boost::shared_ptr<Mq
                                                       findSubscriber(subscriber));
     if(it != subscribers.end())
       subscribers.erase(it);
+
+    if(subscribers.size() == 0)
+      wildcardTopicMapPtr_->erase(topic);
   }
 }
 

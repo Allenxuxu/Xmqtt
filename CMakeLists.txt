@@ -17,6 +17,7 @@ endif()
 aux_source_directory(${PROJECT_SOURCE_DIR}/Server SERVERFILES)
 
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/Lib/muduo
+                    ${PROJECT_SOURCE_DIR}/Lib/cmdline
                     ${PROJECT_SOURCE_DIR}/Server
 )
 
@@ -38,6 +39,7 @@ set(CXX_FLAGS
  -D_GLIBCXX_USE_CXX11_ABI=0
  )
 
+
 if(CMAKE_BUILD_BITS EQUAL 32)
   list(APPEND CXX_FLAGS "-m32")
 endif()
@@ -46,6 +48,8 @@ string(REPLACE ";" " " CMAKE_CXX_FLAGS "${CXX_FLAGS}")
 set(CMAKE_CXX_FLAGS_DEBUG "-O0")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2 -finline-limit=1000 -DNDEBUG")
 
+
 link_directories(${PROJECT_SOURCE_DIR}/Lib/build/release/lib)
 add_executable(mqtt-server  ${SERVERFILES})
 target_link_libraries(mqtt-server muduo_base muduo_net pthread)
+
