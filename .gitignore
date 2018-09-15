@@ -1,6 +1,6 @@
 bin-debug/
 CMakeFiles/
-Lib/build/
+Lib/build/**
 
 mqtt-server.cbp 
 CMakeCache.txt
